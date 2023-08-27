@@ -204,6 +204,7 @@ h2, h3, h4 {
   gap: 1rem;
   text-align: center; }
   #section-about .about-grid .about-card {
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
