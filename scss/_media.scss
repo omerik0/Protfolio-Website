@@ -81,7 +81,9 @@
 }
 
 @media(max-width:550px) {
-
+.title-border{
+   width: 30%;
+}
    #header{
       &-home{
       height: 40vh;
@@ -104,7 +106,9 @@
    }
    &-inner{
       #main-navbar{
+         height: 20vh;
 
+         
         ul{
          padding-bottom: 80px;
         
@@ -119,7 +123,9 @@
       }
    }
    }
-  #section-about{
+   
+  #section{
+   &-about{
    .about-grid{
       
       .about-card:nth-child(2){
@@ -130,4 +136,16 @@
       }
    }
   }
+  &-form{
+   form{
+   .form-content{
+    
+      input{
+      grid-column: span 2;
+      }
+
+   }
+}
+  }
+}
 }

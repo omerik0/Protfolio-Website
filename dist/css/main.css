@@ -384,6 +384,8 @@ h2, h3, h4 {
     border-bottom: 1px #333 solid; } }
 
 @media (max-width: 550px) {
+  .title-border {
+    width: 30%; }
   #header-home {
     height: 40vh; }
     #header-home::before {
@@ -398,7 +400,7 @@ h2, h3, h4 {
       #header-home .header-content .btn {
         padding: 0.4rem 1rem; }
   #header-inner #main-navbar {
-    height: 10vh; }
+    height: 20vh; }
     #header-inner #main-navbar ul {
       padding-bottom: 80px; }
     #header-inner #main-navbar li {
@@ -406,4 +408,6 @@ h2, h3, h4 {
     #header-inner #main-navbar a {
       padding: 0.5rem; }
   #section-about .about-grid .about-card:nth-child(2) {
-    height: 100%; } }
+    height: 100%; }
+  #section-form form .form-content input {
+    grid-column: span 2; } }
