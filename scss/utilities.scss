@@ -38,8 +38,8 @@ $bg-image:url('../img/showcase.jpg');
     justify-content: center;
     align-items: center;
     background-color: $dark-color;
-    height: 100px;
-    width: 100px;
+    min-height: 100px;
+    min-width: 100px;
     border-radius: 50%;
     transition: all 1s ease-in;
      &:hover{
