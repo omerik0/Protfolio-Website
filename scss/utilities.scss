@@ -1,0 +1,71 @@
+// variables
+$website-width:1280px;
+$main-color:#ffbc00;
+$light-color:#f4f4f4;
+$medium-color:#ccc;
+$dark-color:#333;
+$bg-image:url('../img/showcase.jpg');
+
+// buttons
+%btn-shared{
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    transition: all 0.5s;
+    border: none;
+    cursor: pointer;
+}
+.btn{
+    @extend %btn-shared;
+    &:hover{
+        background-color: $main-color;
+    }
+    &-light{
+        color: $dark-color;
+        background-color: $light-color;
+
+    }
+    &-dark{
+        
+        color: $light-color;
+        background-color: $dark-color;
+
+    }
+}
+
+.circle{
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $dark-color;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    transition: all 1s ease-in;
+     &:hover{
+        transform: scale(2);
+        background-color: $main-color;
+        i{color: $dark-color;}
+        
+     }
+}
+
+.content{
+    position: relative;
+    color: $light-color;
+    text-align: center;
+    margin: 20px;
+    
+    
+    
+    h1{
+        font-size: 4rem;
+        z-index: 1;
+        color: $dark-color;
+        
+    }
+    p{
+        padding-bottom:0.5rem ;
+        color: $dark-color;
+    }
+}
