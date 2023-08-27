@@ -12,6 +12,7 @@
          height: 50vh;
       }
       .header-content{
+         
          h1{font-size: 2.5rem;}
          height: 40%;
          .btn{
@@ -85,6 +86,9 @@
    width: 30%;
 }
    #header{
+      .current{
+         z-index: 1;
+      }
       &-home{
       height: 40vh;
       &::before{

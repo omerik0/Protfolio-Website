@@ -386,6 +386,8 @@ h2, h3, h4 {
 @media (max-width: 550px) {
   .title-border {
     width: 30%; }
+  #header .current {
+    z-index: 1; }
   #header-home {
     height: 40vh; }
     #header-home::before {
