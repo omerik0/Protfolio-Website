@@ -1,71 +1,93 @@
 // variables
-$website-width:1280px;
-$main-color:#ffbc00;
-$light-color:#f4f4f4;
-$medium-color:#ccc;
-$dark-color:#333;
-$bg-image:url('../img/showcase.jpg');
+$website-width: 1280px;
+$main-color: #ffbc00;
+$light-color: #f4f4f4;
+$medium-color: #ccc;
+$dark-color: #333;
+$bg-image: url("../img/showcase.jpg");
 
 // buttons
-%btn-shared{
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    transition: all 0.5s;
-    border: none;
-    cursor: pointer;
-}
-.btn{
-    @extend %btn-shared;
-    &:hover{
-        background-color: $main-color;
-    }
-    &-light{
-        color: $dark-color;
-        background-color: $light-color;
-
-    }
-    &-dark{
-        
-        color: $light-color;
-        background-color: $dark-color;
-
-    }
+%btn-shared {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  transition: all 0.5s;
+  border: none;
+  cursor: pointer;
 }
 
-.circle{
-    margin-top: 0.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $dark-color;
-    min-height: 100px;
-    min-width: 100px;
-    border-radius: 50%;
-    transition: all 1s ease-in;
-     &:hover{
-        transform: scale(2);
-        background-color: $main-color;
-        i{color: $dark-color;}
-        
-     }
-}
-
-.content{
-    position: relative;
+.btn {
+  @extend %btn-shared;
+  &:hover {
+    background-color: $main-color;
+  }
+  &-light {
+    color: $dark-color;
+    background-color: $light-color;
+  }
+  &-dark {
     color: $light-color;
-    text-align: center;
-    margin: 20px;
-    
-    
-    
-    h1{
-        font-size: 4rem;
-        z-index: 1;
-        color: $dark-color;
-        
+    background-color: $dark-color;
+  }
+}
+
+// circle element
+.circle {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $dark-color;
+  min-height: 100px;
+  min-width: 100px;
+  border-radius: 50%;
+  transition: all 1s ease-in;
+  &:hover {
+    transform: scale(2);
+    background-color: $main-color;
+    i {
+      color: $dark-color;
     }
-    p{
-        padding-bottom:0.5rem ;
-        color: $dark-color;
-    }
+  }
+}
+
+// content sections
+.content {
+  position: relative;
+  color: $light-color;
+  text-align: center;
+  margin: 20px;
+  h1 {
+    font-size: 4rem;
+    z-index: 1;
+    color: $dark-color;
+  }
+  p {
+    padding-bottom: 0.5rem;
+    color: $dark-color;
+  }
+}
+
+// 📱 Responsive adjustments
+@media (max-width: 800px) {
+  .content h1 {
+    font-size: 2.5rem;
+  }
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+  .circle {
+    min-height: 80px;
+    min-width: 80px;
+  }
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 }

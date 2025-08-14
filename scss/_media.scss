@@ -1,155 +1,156 @@
-// tablets & smaller
-@media (max-width:800px){
-   #main-navbar{
+// Tablets & smaller
+@media (max-width: 800px) {
+  #main-navbar {
     flex-direction: column;
-    
-   } 
+  }
 
-   #header{
-      &-home{
+  #header {
+    &-home {
       height: 50vh;
-      &::before{
-         height: 50vh;
+      &::before {
+        height: 50vh;
       }
-      .header-content{
-         
-         h1{font-size: 2.5rem;}
-         height: 40%;
-         .btn{
-         padding: 0.4rem 1rem;
-         }
-         padding-bottom: 0.5rem;
+      .header-content {
+        h1 {
+          font-size: 2.5rem;
+        }
+        height: 40%;
+        .btn {
+          padding: 0.4rem 1rem;
+        }
+        padding-bottom: 0.5rem;
       }
-   }
-   &-inner{
-      #main-navbar{
+    }
+
+    &-inner {
+      #main-navbar {
         height: 30vh;
-        ul{
-         padding-bottom: 80px;
+        ul {
+          padding-bottom: 80px;
         }
       }
-   }
-   }
-   #section{
+    }
+  }
 
-      
-      &-specialize,&-process,&-about{
-         .specialize-grid,.process-grid{
-            grid-template-columns: 1fr;
-            padding: 1rem;
-         }
-         .process-card,.specialize-card{
-            background-color: #eee;
-         }
-         .circle:hover{
-            transform: scale(1);
-         }
+  #section {
+    &-specialize,
+    &-process,
+    &-about {
+      .specialize-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
       }
-   
+      .process-card,
+      .specialize-card {
+        background-color: #eee;
+      }
+      .circle:hover {
+        transform: scale(1);
+      }
+    }
 
-   &-about{
-      .about-grid{
+    &-about {
+      .about-grid {
         grid-template-columns: 1fr 1fr;
-        .about-card{
-         grid-column: span 2;
+        .about-card {
+          grid-column: span 2;
           height: 200px;
-          .circle:hover{
+          .circle:hover {
             transform: scale(1);
             margin: 0;
           }
         }
+      }
+    }
 
+    &-work {
+      .work-grid {
+        grid-template-columns: 1fr;
       }
-   }
+    }
 
-   &-work{
-      .work-grid{
-         grid-template-columns: 1fr;
+    &-contact-ways {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 0.5rem;
       }
-   }
-
-   &-contact-ways{
-      .contact-grid{
-         grid-template-columns: 1fr;
-         padding-bottom: 0.5rem;
+      .contact-card {
+        border-bottom: 1px #333 solid;
       }
-      .contact-card{
-         border-bottom: 1px #333 solid;
-         
-      }
-   }
-}
+    }
+  }
 }
 
-@media(max-width:550px) {
-.title-border{
-   width: 30%;
-}
-   #header{
-      .current{
-         z-index: 1;
-      }
-      &-home{
+// Phones & smaller
+@media (max-width: 550px) {
+  .title-border {
+    width: 30%;
+  }
+
+  #header {
+    .current {
+      z-index: 1;
+    }
+    &-home {
       height: 40vh;
-      &::before{
-         height: 40vh;
+      &::before {
+        height: 40vh;
       }
-      #main-navbar{
-         li{
-            padding: 0.5rem;
-         }
+      #main-navbar {
+        li {
+          padding: 0.5rem;
+        }
       }
-      .header-content{
-         h1{font-size: 2.5rem;}
-         height: 40%;
-         .btn{
-         padding: 0.4rem 1rem;
-         }
-         padding-bottom: 0.5rem;
+      .header-content {
+        h1 {
+          font-size: 2.5rem;
+        }
+        height: 40%;
+        .btn {
+          padding: 0.4rem 1rem;
+        }
+        padding-bottom: 0.5rem;
       }
-   }
-   &-inner{
-      #main-navbar{
-         height: 20vh;
+    }
 
-         
-        ul{
-         padding-bottom: 80px;
-        
-         
+    &-inner {
+      #main-navbar {
+        height: 20vh;
+        ul {
+          padding-bottom: 80px;
         }
-        li{
-         padding: 0.5rem;
+        li {
+          padding: 0.5rem;
         }
-        a{
-         padding: 0.5rem;
+        a {
+          padding: 0.5rem;
         }
       }
-   }
-   }
-   
-  #section{
-   &-about{
-   .about-grid{
-      
-      .about-card:nth-child(2){
-         height: 100%;
-        
-        
-         
-      }
-   }
+    }
   }
-  &-form{
-   form{
-   .form-content{
-    
-      input{
-      grid-column: span 2;
-      }
 
-   }
-}
+  #section {
+    &-about {
+      .about-grid {
+        .about-card:nth-child(2) {
+          height: 100%;
+        }
+      }
+    }
+    &-form {
+      form {
+        .form-content {
+          input {
+            grid-column: span 2;
+          }
+        }
+      }
+    }
   }
-}
+
+  // ביטול הגדלת circle גם כאן
+  .circle:hover {
+    transform: scale(1);
+  }
 }
