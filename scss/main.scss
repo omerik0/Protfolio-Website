@@ -418,5 +418,34 @@ h4 {
     font-size: 0.9rem;
   }
 }
+/* Overlay וקריאות לטקסט בקלף הראשון (התמונה) */
+#section-about .about-grid .about-card:first-child {
+  position: relative;
+  color: #fff; /* טקסט לבן */
+  padding: 1rem; /* מרווח פנימי לטקסט */
+}
+
+#section-about .about-grid .about-card:first-child::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* top/right/bottom/left: 0 */
+  background: rgba(0, 0, 0, 0.45); /* שכבת כהות */
+  z-index: 0;
+  border-radius: inherit; /* אם יש עיגול פינות */
+}
+
+/* הטקסט מעל ה-overlay */
+#section-about .about-grid .about-card:first-child > * {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* בוסטר לקריאות */
+}
+
+/* התאמות מובייל – קצת פחות צפוף */
+@media (max-width: 800px) {
+  #section-about .about-grid .about-card:first-child {
+    padding: 1.2rem;
+  }
+}
 
 @import "media";
