@@ -1,14 +1,35 @@
-@import "utilities";
+/* =========================
+   VARIABLES
+   ========================= */
+$website-width: 1280px;
+$main-color: #ffbc00;
+$light-color: #f4f4f4;
+$medium-color: #ccc;
+$dark-color: #333;
 
+/* =========================
+   RESETS & BASE
+   ========================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: "Dosis", sans-serif;
   line-height: 1.5;
+  color: $dark-color;
+}
+img {
+  width: 100%;
+  display: block;
+}
+a {
+  text-decoration: none;
+  color: $dark-color;
+}
+ul {
+  list-style: none;
 }
 
 .container {
@@ -18,32 +39,60 @@ body {
   overflow: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: $dark-color;
-}
-
-ul {
-  list-style: none;
-}
-
-img {
-  width: 100%;
-}
-
 h2,
 h3,
 h4 {
   text-transform: uppercase;
 }
-
 .title-border {
   border-bottom: 2px solid $main-color;
   margin: auto;
   width: 5%;
 }
 
-// navbar
+.content {
+  position: relative;
+  text-align: center;
+  margin: 20px;
+  h1 {
+    font-size: 4rem;
+    z-index: 1;
+    color: $dark-color;
+  }
+  p {
+    padding-bottom: 0.5rem;
+    color: $dark-color;
+  }
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+%btn-shared {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  transition: all 0.5s;
+  border: none;
+  cursor: pointer;
+}
+.btn {
+  @extend %btn-shared;
+  &:hover {
+    background-color: $main-color;
+  }
+  &-light {
+    color: $dark-color;
+    background-color: $light-color;
+  }
+  &-dark {
+    color: $light-color;
+    background-color: $dark-color;
+  }
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
 #main-navbar {
   width: 100%;
   display: flex;
@@ -52,6 +101,7 @@ h4 {
   text-align: center;
   position: relative;
   z-index: 2;
+
   h1 {
     font-family: "Tilt Prism", cursive;
     color: $light-color;
@@ -77,7 +127,9 @@ h4 {
   }
 }
 
-// header
+/* =========================
+   HEADER
+   ========================= */
 #header {
   &-home {
     background: url(../img/showcase-chile.jpg) no-repeat center right / cover;
@@ -85,10 +137,7 @@ h4 {
     &::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
+      inset: 0;
       background-color: rgba(0, 0, 0, 0.4);
     }
     h1,
@@ -114,10 +163,15 @@ h4 {
   }
 }
 
+/* =========================
+   SECTIONS
+   ========================= */
 #section {
-  // section-specialize & process
+  /* ---- specialize & process ---- */
   &-specialize,
   &-process {
+    margin: 2rem;
+    text-align: center;
     h1 {
       font-size: 2rem;
     }
@@ -127,12 +181,11 @@ h4 {
     i {
       color: $main-color;
     }
-    margin: 2rem;
-    text-align: center;
     p {
       font-size: 1.5rem;
       line-height: 1.7;
     }
+
     .specialize-grid,
     .process-grid {
       margin-top: 2rem;
@@ -142,6 +195,7 @@ h4 {
     }
   }
 
+  /* ---- descript ---- */
   &-descript {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -164,6 +218,7 @@ h4 {
     }
   }
 
+  /* ---- process specific ---- */
   &-process {
     .process-card {
       display: flex;
@@ -190,7 +245,9 @@ h4 {
     }
   }
 
-  // about page
+  /* =========================
+     ABOUT (חדש: split + perspective)
+     ========================= */
   &-about {
     .about-content {
       text-align: center;
@@ -203,45 +260,83 @@ h4 {
         font-size: 1.3rem;
       }
     }
+
     .about-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
       text-align: center;
+
+      /* קלפים כלליים */
       .about-card {
         margin: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        height: 350px;
         i {
           color: #974ec3;
         }
-        height: 350px;
-        .circle {
-          background-color: $medium-color;
-          &:hover {
-            background-color: #974ec3;
-            i {
-              color: $medium-color;
-            }
-            margin: 1rem;
-            transform: scale(1.5);
-          }
+      }
+
+      /* ---- SPLIT CARD: חצי תמונה / חצי טקסט ---- */
+      .about-card.about-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 350px;
+        margin: 1rem;
+        background: none;
+        border: none;
+      }
+      .about-split .split-left {
+        background: url(../img/photo.me.jpg) no-repeat center center / cover;
+        border-radius: 8px 0 0 8px;
+        min-height: inherit;
+      }
+      .about-split .split-right {
+        background: #eee;
+        border-left: 2px solid $main-color;
+        border-radius: 0 8px 8px 0;
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        h2 {
+          margin-bottom: 0.6rem;
         }
-        &:first-child {
-          background: url(../img/photo.me.jpg) no-repeat center center / cover;
+        p {
+          font-size: 1.1rem;
+          line-height: 1.7;
         }
-        &:nth-child(2) {
-          grid-column: span 2;
-          background-color: #eee;
-          border-left: $main-color 2px solid;
+      }
+
+      /* ---- PERSPECTIVE CARD ---- */
+      .about-card.about-perspective {
+        background: #eee;
+        border-left: 2px solid $main-color;
+        border-radius: 8px;
+        padding: 1.25rem 1.5rem;
+        min-height: 350px;
+        margin: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        h2 {
+          margin-bottom: 0.6rem;
+        }
+        p {
+          font-size: 1.1rem;
+          line-height: 1.7;
+          max-width: 90%;
         }
       }
     }
   }
 
-  // work page
+  /* ---- work ---- */
   &-work {
     margin-bottom: 5rem;
     .work-content {
@@ -257,6 +352,7 @@ h4 {
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
+
     .work-card {
       overflow: hidden;
       position: relative;
@@ -299,6 +395,7 @@ h4 {
     }
   }
 
+  /* ---- contact form ---- */
   &-form {
     .contact-content {
       h1 {
@@ -334,6 +431,7 @@ h4 {
     }
   }
 
+  /* ---- contact ways ---- */
   &-contact-ways {
     background-color: $main-color;
     .contact-grid {
@@ -354,6 +452,9 @@ h4 {
   }
 }
 
+/* =========================
+   FOOTER
+   ========================= */
 #footer {
   &-main {
     height: 80px;
@@ -389,20 +490,148 @@ h4 {
   }
 }
 
-// 📱 רספונסיביות נוספת
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+/* Tablets & smaller */
 @media (max-width: 800px) {
   p {
     padding: 0 0.8rem;
   }
-  #section-about .about-grid {
-    grid-template-columns: 1fr;
+
+  #main-navbar {
+    flex-direction: column;
   }
-  #section-work .work-grid {
-    grid-template-columns: 1fr;
+
+  #header {
+    &-home {
+      height: 50vh;
+      &::before {
+        height: 50vh;
+      }
+      .header-content {
+        h1 {
+          font-size: 2.5rem;
+        }
+        height: 40%;
+        .btn {
+          padding: 0.4rem 1rem;
+        }
+        padding-bottom: 0.5rem;
+      }
+    }
+    &-inner {
+      #main-navbar {
+        height: 30vh;
+        ul {
+          padding-bottom: 80px;
+        }
+      }
+    }
+  }
+
+  #section {
+    &-specialize,
+    &-process,
+    &-about {
+      .specialize-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      .process-card,
+      .specialize-card {
+        background-color: #eee;
+      }
+      .circle:hover {
+        transform: scale(1);
+      }
+    }
+
+    /* ABOUT: שתי עמודות → עמודה אחת */
+    &-about {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-card.about-split {
+        grid-template-columns: 1fr;
+        min-height: initial;
+      }
+      .about-split .split-left {
+        border-radius: 8px 8px 0 0;
+        min-height: 220px;
+      }
+      .about-split .split-right {
+        border-left: none;
+        border-top: 2px solid $main-color;
+        border-radius: 0 0 8px 8px;
+      }
+    }
+
+    &-work {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &-contact-ways {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 0.5rem;
+      }
+      .contact-card {
+        border-bottom: 1px #333 solid;
+      }
+    }
   }
 }
 
+/* Phones */
 @media (max-width: 550px) {
+  .title-border {
+    width: 30%;
+  }
+
+  #header {
+    .current {
+      z-index: 1;
+    }
+    &-home {
+      height: 40vh;
+      &::before {
+        height: 40vh;
+      }
+      #main-navbar li {
+        padding: 0.5rem;
+      }
+      .header-content {
+        h1 {
+          font-size: 2.2rem;
+        }
+        height: 40%;
+        .btn {
+          padding: 0.4rem 1rem;
+        }
+        padding-bottom: 0.5rem;
+      }
+    }
+    &-inner {
+      #main-navbar {
+        height: 20vh;
+        ul {
+          padding-bottom: 80px;
+        }
+        li {
+          padding: 0.5rem;
+        }
+        a {
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+
   h1 {
     font-size: 1.8rem;
   }
@@ -412,40 +641,15 @@ h4 {
   p {
     font-size: 1rem;
   }
-  #section-form input,
-  #section-form textarea {
-    padding: 0.5rem;
-    font-size: 0.9rem;
+
+  #section-form {
+    input,
+    textarea {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+    form .form-content input {
+      grid-column: span 2;
+    }
   }
 }
-/* Overlay וקריאות לטקסט בקלף הראשון (התמונה) */
-#section-about .about-grid .about-card:first-child {
-  position: relative;
-  color: #fff; /* טקסט לבן */
-  padding: 1rem; /* מרווח פנימי לטקסט */
-}
-
-#section-about .about-grid .about-card:first-child::before {
-  content: "";
-  position: absolute;
-  inset: 0; /* top/right/bottom/left: 0 */
-  background: rgba(0, 0, 0, 0.45); /* שכבת כהות */
-  z-index: 0;
-  border-radius: inherit; /* אם יש עיגול פינות */
-}
-
-/* הטקסט מעל ה-overlay */
-#section-about .about-grid .about-card:first-child > * {
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* בוסטר לקריאות */
-}
-
-/* התאמות מובייל – קצת פחות צפוף */
-@media (max-width: 800px) {
-  #section-about .about-grid .about-card:first-child {
-    padding: 1.2rem;
-  }
-}
-
-@import "media";
