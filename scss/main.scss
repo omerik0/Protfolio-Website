@@ -1,4 +1,44 @@
-// navbar
+@import "utilities";
+
+/* ===== Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Dosis", sans-serif;
+  line-height: 1.5;
+}
+.container {
+  max-width: $website-width;
+  padding: 0 1.5rem;
+  margin: auto;
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: $dark-color;
+}
+ul {
+  list-style: none;
+}
+img {
+  width: 100%;
+  display: block;
+}
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+}
+.title-border {
+  border-bottom: 2px solid $main-color;
+  margin: auto;
+  width: 5%;
+}
+
+/* ===== Navbar ===== */
 #main-navbar {
   width: 100%;
   display: flex;
@@ -13,11 +53,9 @@
     color: $light-color;
     font-size: 2rem;
   }
-
   ul {
     display: flex;
   }
-
   li {
     padding: 1rem 1.5rem;
   }
@@ -27,38 +65,33 @@
     padding: 1rem;
     border-bottom: 3px solid transparent;
     transition: border-color 1s;
-
     &:hover {
       border-color: $medium-color;
     }
-
     &.current {
       border-bottom: 2px solid $main-color;
     }
   }
 }
 
-// header
+/* ===== Header ===== */
 #header {
   &-home {
     background: url(../img/showcase-chile.jpg) no-repeat center right / cover;
     height: 100vh;
-
     &::before {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
-      height: 100%;
       width: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
     }
-
     h1,
     p {
       color: $light-color;
     }
-
     .header-content {
       height: 80%;
       display: flex;
@@ -67,7 +100,6 @@
       align-items: center;
     }
   }
-
   &-inner {
     #main-navbar {
       background: url(../img/showcase-chile.jpg) no-repeat center center / cover;
@@ -79,10 +111,13 @@
   }
 }
 
+/* ===== Sections ===== */
 #section {
-  // section-specialize & process
+  /* --- specialize & process --- */
   &-specialize,
   &-process {
+    margin: 2rem;
+    text-align: center;
     h1 {
       font-size: 2rem;
     }
@@ -92,14 +127,10 @@
     i {
       color: $main-color;
     }
-    margin: 2rem;
-    text-align: center;
-
     p {
       font-size: 1.5rem;
       line-height: 1.7;
     }
-
     .specialize-grid,
     .process-grid {
       margin-top: 2rem;
@@ -109,53 +140,49 @@
     }
   }
 
+  /* --- descript --- */
   &-descript {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     height: 40vh;
-
     p {
       font-size: 2rem;
     }
-
     .descript-card {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-
       &:nth-child(odd) {
-        background-color: $light-color;
+        background: $light-color;
       }
       &:nth-child(even) {
-        background-color: $medium-color;
+        background: $medium-color;
       }
     }
   }
 
+  /* --- process hover circle --- */
   &-process {
     .process-card {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
     .circle {
       margin-top: 0.8rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $dark-color;
+      background: $dark-color;
       height: 100px;
       width: 100px;
       border-radius: 50%;
       transition: all 1s ease-in;
-
       &:hover {
         transform: scale(2);
-        background-color: $main-color;
-
+        background: $main-color;
         i {
           color: $dark-color;
         }
@@ -163,13 +190,12 @@
     }
   }
 
-  // about page
+  /* ===== ABOUT (restored + split card) ===== */
   &-about {
     .about-content {
       text-align: center;
       margin: 40px 0;
       line-height: 1.8;
-
       h1 {
         font-size: 2rem;
       }
@@ -178,91 +204,122 @@
       }
     }
 
+    /* גריד כללי כמו במקור */
     .about-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
       text-align: center;
-
-      .about-card {
-        margin: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        i {
-          color: #974ec3;
-        }
-        height: 350px;
-
-        .circle {
-          background-color: $medium-color;
-
-          &:hover {
-            background-color: #974ec3;
-
-            i {
-              color: $medium-color;
-            }
-            margin: 1rem;
-            transform: scale(1.5);
-          }
-        }
-
-        &:first-child {
-          background: url(../img/photo.me.jpg) no-repeat center center / cover;
-        }
-        &:nth-child(2) {
-          grid-column: span 2;
-          background-color: #eee;
-          border-left: $main-color 2px solid;
-        }
-      }
-      // about page
-
-  /* כאן תדביק את ה- SCSS החדש */
-  .about-split {
-    display: flex;
-    flex-wrap: wrap;
-    height: 350px;
-    overflow: hidden;
-
-    .split-left {
-      flex: 1;
-      background: url("../img/photo.me.jpg") no-repeat center center / cover;
-      min-height: 350px;
     }
 
-    .split-right {
+    /* כרטיס כללי כמו אצלך */
+    .about-card {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 350px;
+      i {
+        color: #974ec3;
+      }
+      .circle {
+        background: $medium-color;
+        &:hover {
+          background: #974ec3;
+          i {
+            color: $medium-color;
+          }
+          margin: 1rem;
+          transform: scale(1.5);
+        }
+      }
+    }
+
+    /* --- Split: חצי תמונה / חצי טקסט --- */
+    .about-card.about-split {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 350px;
+      margin: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      background: none;
+      border: none;
+    }
+    .about-split .split-left {
       flex: 1;
-      background-color: #eee;
-      padding: 2rem;
+      min-height: 350px;
+      background: url("../img/photo.me.jpg") no-repeat center center / cover;
+    }
+    .about-split .split-right {
+      flex: 1;
+      background: #eee;
+      border-left: 2px solid $main-color;
+      padding: 1.25rem 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
+      h2 {
+        margin-bottom: 0.6rem;
+      }
+      p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
     }
-  }
 
-  @media (max-width: 800px) {
-    .about-split {
-      flex-direction: column;
-      height: auto;
+    /* --- Perspective card (טקסט בלבד) --- */
+    .about-card.about-perspective {
+      background: #eee;
+      border-left: 2px solid $main-color;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      min-height: 350px;
+      margin: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      h2 {
+        margin-bottom: 0.6rem;
+      }
+      p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        max-width: 90%;
+      }
+    }
 
-      .split-left {
-        min-height: 200px;
+    /* רספונסיביות ל-ABOUT */
+    @media (max-width: 1200px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 800px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      .about-card.about-split {
+        flex-direction: column;
+        min-height: auto;
+      }
+      .about-split .split-left {
+        min-height: 220px;
+      }
+      .about-split .split-right {
+        border-left: none;
+        border-top: 2px solid $main-color;
       }
     }
   }
-}
 
-    }
-  }
-
-  // work page
+  /* --- work --- */
   &-work {
     margin-bottom: 5rem;
-
     .work-content {
       h1 {
         font-size: 2rem;
@@ -271,23 +328,19 @@
         font-size: 1.3rem;
       }
     }
-
     .work-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
-
     .work-card {
       overflow: hidden;
       position: relative;
       transition: all 1s ease-in;
-      background-color: $main-color;
-
+      background: $main-color;
       h2 a {
         color: $light-color;
       }
-
       .text {
         position: absolute;
         top: 0;
@@ -300,12 +353,10 @@
         z-index: 2;
         transform: translateY(-60%);
         transition: transform 2s ease;
-
         &:hover {
           transform: translateY(0);
         }
       }
-
       &::after {
         content: "";
         position: absolute;
@@ -318,13 +369,13 @@
         transform: scale(1) translateX(-80%) translateY(-80%) rotate(-28deg);
         transition: transform 2s ease;
       }
-
       &:hover::after {
         transform: scale(2) translateX(0) translateY(0) rotate(-28deg);
       }
     }
   }
 
+  /* --- contact form --- */
   &-form {
     .contact-content {
       h1 {
@@ -335,29 +386,24 @@
         margin-top: 0.5rem;
       }
     }
-
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
-
       .form-content {
         display: grid;
         width: 100%;
         grid-template-columns: 1fr 1fr;
         gap: 1rem;
-
         input {
           padding: 0.5rem;
         }
-
         textarea {
           height: 200px;
           padding: 0.5rem;
           grid-column: span 2;
         }
       }
-
       button[type="submit"] {
         width: 50%;
         margin: 2rem;
@@ -365,16 +411,15 @@
     }
   }
 
+  /* --- contact ways --- */
   &-contact-ways {
-    background-color: $main-color;
-
+    background: $main-color;
     .contact-grid {
       width: 100%;
       height: 100%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-
       .contact-card {
         padding: 1rem;
         display: flex;
@@ -387,26 +432,24 @@
   }
 }
 
+/* ===== Footer ===== */
 #footer {
   &-main {
     height: 80px;
-    background-color: $dark-color;
+    background: $dark-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
     color: $light-color;
-
     .social {
       display: flex;
       justify-content: center;
       text-align: center;
     }
-
     a {
       color: $light-color;
     }
-
     .circle-social {
       display: flex;
       align-items: center;
@@ -415,31 +458,90 @@
       height: 50px;
       width: 50px;
       border-radius: 50%;
-      background-color: transparent;
+      background: transparent;
       border: 2px solid $light-color;
       transition: background-color 0.5s ease-in-out;
-
       &:hover {
-        background-color: $main-color;
+        background: $main-color;
       }
     }
   }
 }
 
-// 📱 רספונסיביות נוספת
+/* ===== Responsive (global) ===== */
 @media (max-width: 800px) {
   p {
     padding: 0 0.8rem;
   }
-  #section-about .about-grid {
-    grid-template-columns: 1fr;
+  #main-navbar {
+    flex-direction: column;
   }
-  #section-work .work-grid {
-    grid-template-columns: 1fr;
+
+  #header {
+    &-home {
+      height: 50vh;
+      &::before {
+        height: 50vh;
+      }
+      .header-content {
+        h1 {
+          font-size: 2.5rem;
+        }
+        height: 40%;
+        .btn {
+          padding: 0.4rem 1rem;
+        }
+        padding-bottom: 0.5rem;
+      }
+    }
+    &-inner {
+      #main-navbar {
+        height: 30vh;
+        ul {
+          padding-bottom: 80px;
+        }
+      }
+    }
+  }
+
+  #section {
+    &-specialize,
+    &-process,
+    &-about {
+      .specialize-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      .process-card,
+      .specialize-card {
+        background: #eee;
+      }
+      .circle:hover {
+        transform: scale(1);
+      }
+    }
+    &-work {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    &-contact-ways {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 0.5rem;
+      }
+      .contact-card {
+        border-bottom: 1px #333 solid;
+      }
+    }
   }
 }
 
 @media (max-width: 550px) {
+  .title-border {
+    width: 30%;
+  }
   h1 {
     font-size: 1.8rem;
   }
@@ -449,40 +551,55 @@
   p {
     font-size: 1rem;
   }
-  #section-form input,
-  #section-form textarea {
-    padding: 0.5rem;
-    font-size: 0.9rem;
+
+  #header {
+    .current {
+      z-index: 1;
+    }
+    &-home {
+      height: 40vh;
+      &::before {
+        height: 40vh;
+      }
+      #main-navbar li {
+        padding: 0.5rem;
+      }
+      .header-content {
+        h1 {
+          font-size: 2.2rem;
+        }
+        height: 40%;
+        .btn {
+          padding: 0.4rem 1rem;
+        }
+        padding-bottom: 0.5rem;
+      }
+    }
+    &-inner {
+      #main-navbar {
+        height: 20vh;
+        ul {
+          padding-bottom: 80px;
+        }
+        li {
+          padding: 0.5rem;
+        }
+        a {
+          padding: 0.5rem;
+        }
+      }
+    }
   }
-}
 
-/* Overlay וקריאות לטקסט בקלף הראשון (התמונה) */
-#section-about .about-grid .about-card:first-child {
-  position: relative;
-  color: #fff; /* טקסט לבן */
-  padding: 1rem; /* מרווח פנימי לטקסט */
-}
-
-#section-about .about-grid .about-card:first-child::before {
-  content: "";
-  position: absolute;
-  inset: 0; /* top/right/bottom/left: 0 */
-  background: rgba(0, 0, 0, 0.45); /* שכבת כהות */
-  z-index: 0;
-  border-radius: inherit; /* אם יש עיגול פינות */
-}
-
-/* הטקסט מעל ה-overlay */
-#section-about .about-grid .about-card:first-child > * {
-  position: relative;
-  z-index: 1;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* בוסטר לקריאות */
-}
-
-/* התאמות מובייל – קצת פחות צפוף */
-@media (max-width: 800px) {
-  #section-about .about-grid .about-card:first-child {
-    padding: 1.2rem;
+  #section-form {
+    input,
+    textarea {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+    form .form-content input {
+      grid-column: span 2;
+    }
   }
 }
 
